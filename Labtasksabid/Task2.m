@@ -21,7 +21,7 @@ me      = 0.98*m0;
 mh      = 0.16*m0;
 mr      = me*mh/(me+mh);
 
-fcv     = 23*q;
+fcv     = 23*q; %constant
 fcvf    = fcv/1000;
 
 eps     = 11.9*eps0;
