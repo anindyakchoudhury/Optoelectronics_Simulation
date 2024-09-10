@@ -48,7 +48,7 @@ for T = Ts
     alpha   = (E>EgT-Ep).*(E - EgT + Ep).^2./(exp(Ep./(kB*T)) - 1) ...
             + (E>EgT+Ep).*(E - EgT - Ep).^2./(1 - exp(-Ep./(kB*T)));
      alpha = alpha/eV;
-     alpha = (1e10)^2.*alpha;   %need to make it work
+     alpha = (9e10)^2.*alpha;   %need to make it work
 
     plot(E/q, sqrt(alpha),'Linewidth', 2,...
         'DisplayName',sprintf('T = %d K',T));
