@@ -56,6 +56,7 @@ subplot(212)
 plot(E/q,real(rsp)/100,'Linewidth', 1.5)
 xlabel('E (eV)');
 ylabel('R_{sp} (1/cm)');
+xlim([1 2.5])
 grid on;
 
 
