@@ -28,52 +28,23 @@ fcvf    = fcv/1000;
 
 eps     = 12.9*eps0;
 
-nr = mean(n); %added from abid's memory
-
 %% Lab Task 1: Compare 'alpha' from 'k' with 'alpha' obtained from formula (using 'n') 
 
 E= h*c./lambda;
 % allowed transition
 alpha   = q^2*sqrt(m0)./(4*pi*hcut^2*eps*c.*n).*(2*mr/m0)^1.5 .*(fcv./E).*(E-Eg).^0.5;
-
-% forbidden transition
-alphaf   = q^2*sqrt(m0)/(6*pi*hcut^2*eps*c*nr) ...
-            .*(2*mr/m0)^2.5 .*(fcvf./E).*(E-Eg).^1.5;  %1/m
-
-
+        
 figure(1);
-% yyaxis left;
-subplot(131)
+yyaxis left;
 plot(lambda/1e-6, alpha/100,'Linewidth', 1.5);
 ylabel('\alpha  cm^{-1}');
-title('Direct Allowed Transition');
 hold on;
 
-% yyaxis right;
-subplot(132)
+yyaxis right;
 plot(lambda/1e-6, 4*pi*k./lambda/100,'o','Linewidth', 1);
 xlabel ('\lambda (\mum)');
 ylabel('\alpha  cm^{-1}');
 grid on;
 title(sprintf("Comparison of \\alpha for %s", 'GaAs'));
-title('Experimental Transition');
 
-
-%legend('Theoretical \alpha','Experimental \alpha = 4\pi\kappa /\lambda');
-
-% figure(2)
-subplot(133)
-% Direct Forbidden Transition
-% subplot(121) %related to 73 no line
-plot(lambda/1e-6, alphaf/100,'Linewidth', 1.5);
-xlabel ('\lambda (\mum)');
-ylabel('\alpha_f  cm^{-1}');
-title('Direct Forbidden Transition');
-subtitle(sprintf(string));
-grid on;
-
-% subplot(122)
-% plot(E./q, alphaf/100,'Linewidth', 1.5);
-% xlabel ('h\nu (eV)');
-% ylabel('\alpha_f cm^{-1}');
-% grid on;
+legend('Theoretical \alpha','Experimental \alpha = 4\pi\kappa /\lambda');
