@@ -43,8 +43,8 @@ eV      = 1.6 * 10^-19;
 % Direct Allowed transition
 figure(3);
 for  T = Ts
-     EgT   = Eg_V(T); %From Vashni's law
-     %EgT  = Eg; %bandgap does not change with temperature
+     %EgT   = Eg_V(T); %From Vashni's law
+     EgT  = Eg; %bandgap does not change with temperature
      alpha = (E>EgT-Ep).*(E - EgT + Ep).^2./(exp(Ep./(kB*T)) - 1) ...
             + (E>EgT+Ep).*(E - EgT - Ep).^2./(1 - exp(-Ep./(kB*T)));
      alpha = (5.9135e20)^2.*alpha;   % need to make it work
@@ -62,7 +62,7 @@ ylabel('\alpha^{1/2} cm^{-1/2} eV^{1/2}');
 title(sprintf("Energy-dependent \\alpha^{1/2} for %s",string));
 subtitle("Due to phonon emission/absorption");
 % xlim([Eg/q-0.1,Eg/q+0.2]);
-xlim([0.95,1.3]);
+xlim([0.95,1.225]);
 ylim([0, 7]);
 grid on;
 legend('Box','off');
