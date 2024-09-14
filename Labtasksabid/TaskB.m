@@ -1,5 +1,5 @@
 clc;
-clear;
+clearvars;
 close all;
 format long;
 set(0,'DefaultAxesFontName', 'Latex');
@@ -31,12 +31,12 @@ eps    = 12.9*eps0;
 T      = 300;
 
 %% Numerically calculate the total spontaneous emission rate
-E       = h*c./lambda;
+E      = h*c./lambda;
 
 % allowed transition
 % nr for fixed refractive index
 % n for dispersion
-alpha   = q^2*sqrt(m0)./(4*pi*hcut^2*eps*c.*n) ...
+alpha = q^2*sqrt(m0)./(4*pi*hcut^2*eps*c.*n) ...
             .*(2*mr/m0)^1.5 .*(fcv./E).*sqrt((E-Eg));
 alpha = real(alpha);
 P     = alpha .* (c./n);
@@ -48,7 +48,7 @@ subplot(211)
 plot(lambda/1e-9,real(rsp)/100,'Linewidth', 1.5);
 xlabel('\lambda (nm)');
 ylabel('R_{sp} (1/cm)');
-title("total spontaneous emission rate of GaAs R_{sp}");
+title("Total Spontaneous Emission Rate of GaAs R_{sp}");
 grid on;
 
 subplot(212)
