@@ -6,14 +6,14 @@ set(0,'DefaultAxesFontName', 'Latex');
 set(0,'DefaultAxesFontSize', 13);
 
 %% Loading data
-data = importdata('GaAs2.txt');
+data   = importdata('GaAs2.txt');
 lambda = data(:,1);
 lambda = lambda.*1e-6; %m
-n = data(:,2);
-k = data(:,3);
-m0=9.11e-31;
-q=1.6e-19;
-eps0=8.854e-12;
+n      = data(:,2);
+k      = data(:,3);
+m0     = 9.11e-31;
+q      = 1.6e-19;
+eps0   = 8.854e-12;
 
 %% physical constants
 me      = 0.063*m0;
@@ -28,12 +28,12 @@ fcvf    = fcv/1000;
 
 eps     = 12.9*eps0;
 
-%% Lab Task 1: Compare 'alpha' from 'k' with 'alpha' obtained from formula (using 'n') 
+%% Lab Task 1: Compare 'alpha' from 'k' with 'alpha' obtained from formula (using 'n')
 
 E= h*c./lambda;
 % allowed transition
 alpha   = q^2*sqrt(m0)./(4*pi*hcut^2*eps*c.*n).*(2*mr/m0)^1.5 .*(fcv./E).*(E-Eg).^0.5;
-        
+
 figure(1);
 yyaxis left;
 plot(lambda/1e-6, alpha/100,'Linewidth', 1.5);
