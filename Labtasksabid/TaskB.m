@@ -39,10 +39,9 @@ E       = h*c./lambda;
 alpha   = q^2*sqrt(m0)./(4*pi*hcut^2*eps*c.*n) ...
             .*(2*mr/m0)^1.5 .*(fcv./E).*sqrt((E-Eg));
 alpha = real(alpha);
-P = alpha .* (c./n);
-phi = 8*pi.*(E/h).^3.*n.^3./c^3   .*  (1./(exp(E/(kB*T)) - 1));
-
-rsp = P.*phi;
+P     = alpha .* (c./n);
+phi   = 8*pi.*(E/h).^3.*n.^3./c^3   .*  (1./(exp(E/(kB*T)) - 1));
+rsp   = P.*phi;
 
 figure(1);
 subplot(211)
@@ -58,63 +57,3 @@ xlabel('E (eV)');
 ylabel('R_{sp} (1/cm)');
 xlim([1 2.5])
 grid on;
-
-
-% %% Experimental comparison
-% % Experimental spectra from k
-% alpha_exp   = 4*pi*k./lambda;
-%
-% alpha_exp = real(alpha_exp);
-% P = alpha_exp .* (c./n);
-% phi = 8*pi.*(E/h).^3.*n.^3./c^3   .*  (1./(exp(E/(kB*T)) - 1));
-%
-%
-%
-% rsp = P.*phi;
-%
-%
-% figure(2);
-% subplot(211);
-% plot(lambda/1e-9,real(rsp)/100,'Linewidth', 1.5);
-% xlabel('\lambda (nm)');
-% ylabel('R_{sp} (1/cm)');
-% title('alpha = 4\pi k/\lambda');
-% grid on;
-%
-%
-% subplot(212)
-% plot(E/q,real(rsp)/100,'Linewidth', 1.5)
-% xlabel('E (eV)');
-% ylabel('R_{sp} (1/cm)');
-% grid on;
-%
-%
-% %% Rsp for different Temperature
-% %  interp1(E,alpha,,method)
-%
-% nr      = mean(n);
-% Ts = 200:10:250;
-% A = 0.54/1000;
-% B = 204;
-% lambda = linspace(200,1000,10000)*1e-9;
-% E_ = h*c./lambda;
-%
-% figure(3);
-% for T = Ts
-%
-%     Eg_ = (1.519 - A*T^2/(B+T))*q;
-%     alpha = q^2*sqrt(m0)./(4*pi*hcut^2*eps*c.*nr) ...
-%             .*(2*mr/m0)^1.5 .*(fcv./E_).*sqrt((E_-Eg_));
-%     P = alpha .* (c./nr);
-%     phi = 8*pi.*(E_/h).^3.*nr.^3./(c^3*exp(E_/(kB*T)) - 1);
-%     rsp = P.*phi;
-%     plot(lambda/1e-9,real(rsp)/100,'DisplayName',...
-%         sprintf('T = %d',T));
-%     hold on
-% end
-% xlabel('\lambda (nm)');
-% ylabel('R_{sp} (1/cm)');
-% title('Dispersive n');
-
-
-
