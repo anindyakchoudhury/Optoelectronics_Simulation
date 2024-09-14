@@ -9,13 +9,13 @@ set(0,'DefaultAxesFontSize', 13);
 
 
 %% physical constants
-m0=9.11e-31;
-q=1.6e-19;
-eps0=8.854e-12;
-kB   = 1.38e-23;
-h=6.624e-34;
-hcut=h/(2*pi);
-c=3e8;
+m0      = 9.11e-31;
+q       = 1.6e-19;
+eps0    = 8.854e-12;
+kB      =  1.38e-23;
+h       = 6.624e-34;
+hcut    = h/(2*pi);
+c       = 3e8;
 
 me      = 0.98*m0;
 mh      = 0.16*m0;
@@ -35,7 +35,7 @@ B       = 1108;
 Eg_V    = @(T) (Eg0 - A*T^2/(B + T))*q; %Vashni's law
 Ep      = 0.03 * q;     % Typical phonon energy 20-30meV
 %% Task 2: Indirect bandgap
-Ts      = [250, 300, 350, 400, 415];
+Ts      = [20, 42, 77, 90, 112, 170, 195, 249, 291, 363, 415];
 % E       = linspace(Eg-0.1*q,Eg+0.2*q,1000);
 E       = linspace(0.95*q,1.3*q,1000);
 eV      = 1.6 * 10^-19;
@@ -43,13 +43,14 @@ eV      = 1.6 * 10^-19;
 % Direct Allowed transition
 figure(3);
 for T = Ts
-     EgT = Eg_V(T); %From Vashni's law
-    % EgT = Eg; %bandgap does not change with temperature
-    alpha   = (E>EgT-Ep).*(E - EgT + Ep).^2./(exp(Ep./(kB*T)) - 1) ...
+     EgT   = Eg_V(T); %From Vashni's law
+    % EgT  = Eg; %bandgap does not change with temperature
+     alpha = (E>EgT-Ep).*(E - EgT + Ep).^2./(exp(Ep./(kB*T)) - 1) ...
             + (E>EgT+Ep).*(E - EgT - Ep).^2./(1 - exp(-Ep./(kB*T)));
-     alpha = alpha/eV;
-     alpha = (9e10)^2.*alpha;   %need to make it work
+     %alpha = alpha/eV;
+     %alpha = (9e10)^2.*alpha;   % need to make it work
 
+% from the graph in the paper, 415K has photon energy 1.10 eV for 3.25 cm^-.5 eV^0.5
     plot(E/q, sqrt(alpha),'Linewidth', 2,...
         'DisplayName',sprintf('T = %d K',T));
 
