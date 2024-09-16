@@ -47,13 +47,13 @@ figure(1);
 subplot(211)
 plot(lambda/1e-9,real(rsp)/100,'Linewidth', 1.5);
 xlabel('\lambda (nm)');
-ylabel('R_{sp} (1/cm)');
+ylabel('R_{sp} (cm^{-3}s^{-1})');
 title("Total Spontaneous Emission Rate of GaAs R_{sp}");
 grid on;
 
 subplot(212)
 plot(E/q,real(rsp)/100,'Linewidth', 1.5)
 xlabel('E (eV)');
-ylabel('R_{sp} (1/cm)');
+ylabel('R_{sp} (cm^{-3}s^{-1})');
 xlim([1 2.5])
 grid on;

@@ -36,9 +36,9 @@ E       = h*c./lambda;
 alpha   = q^2*sqrt(m0)./(4*pi*hcut^2*eps*c.*n).*(2*mr/m0)^1.5 .*(fcv./E).*(E-Eg).^0.5;
 
 % forbidden transition
-alphaf  = q^2*sqrt(m0)/(6*pi*hcut^2*eps*c*nr) ...
+alphaf  = q^2*sqrt(m0)/(6*pi*hcut^2*eps*c*n) ...
             .*(2*mr/m0)^2.5 .*(fcvf./E).*(E-Eg).^1.5;  %1/m
-
+%considering dispersion, so used n
 
 figure(1);
 % yyaxis left;

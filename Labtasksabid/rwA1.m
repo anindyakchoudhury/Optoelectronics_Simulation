@@ -33,29 +33,36 @@ nr     = mean(n); %added from abid's memory
 
 E       = h*c./lambda;
 % allowed transition
-alpha   = q^2*sqrt(m0)./(4*pi*hcut^2*eps*c.*n).*(2*mr/m0)^1.5 .*(fcv./E).*(E-Eg).^0.5;
+alpha   = q^2*sqrt(m0)./(4*pi*hcut^2*eps*c.*nr).*(2*mr/m0)^1.5 .*(fcv./E).*(E-Eg).^0.5;
 
 % forbidden transition
 alphaf  = q^2*sqrt(m0)/(6*pi*hcut^2*eps*c*nr) ...
             .*(2*mr/m0)^2.5 .*(fcvf./E).*(E-Eg).^1.5;  %1/m
-
+%considering without dispersion, so used nr
 
 figure(1);
-% yyaxis left;
-subplot(121)
+yyaxis left;
+%subplot(121)
 plot(lambda/1e-6, alpha/100,'Linewidth', 1.5);
 xlabel ('\lambda (\mum)');
 ylabel('\alpha  cm^{-1}');
-title('Direct Allowed Transition');
+%title('Direct Allowed Transition');
 hold on;
 
 % figure(2)
-subplot(122)
+% subplot(122)
 % Direct Forbidden Transition
 % subplot(121) %related to 73 no line
+yyaxis right;
 plot(lambda/1e-6, alphaf/100,'Linewidth', 1.5);
 xlabel ('\lambda (\mum)');
 ylabel('\alpha_f  cm^{-1}');
-title('Direct Forbidden Transition');
+title('Direct Allowed \alpha & Direct Forbidden \alpha_f Transititon');
 subtitle(sprintf(string));
 grid on;
+
+figure(2)
+plot(lambda/1e-6,((alpha)/(alphaf)),'Linewidth', 1.5);
+xlabel ('\lambda (\mum)');
+ylabel('\alpha  cm^{-1}');
+title('Order Comparison of \alpha & \alpha_f');
