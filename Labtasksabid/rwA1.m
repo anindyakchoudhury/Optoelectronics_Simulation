@@ -42,25 +42,15 @@ alphaf  = q^2*sqrt(m0)/(6*pi*hcut^2*eps*c*nr) ...
 
 figure(1);
 % yyaxis left;
-subplot(131)
+subplot(121)
 plot(lambda/1e-6, alpha/100,'Linewidth', 1.5);
 xlabel ('\lambda (\mum)');
 ylabel('\alpha  cm^{-1}');
 title('Direct Allowed Transition');
 hold on;
 
-% yyaxis right;
-subplot(132)
-plot(lambda/1e-6, 4*pi*k./lambda/100,'o','Linewidth', 1);
-xlabel ('\lambda (\mum)');
-ylabel('\alpha  cm^{-1}');
-grid on;
-title(sprintf("Comparison of \\alpha for %s", 'GaAs'));
-title('Experimental Transition');
-
-
 % figure(2)
-subplot(133)
+subplot(122)
 % Direct Forbidden Transition
 % subplot(121) %related to 73 no line
 plot(lambda/1e-6, alphaf/100,'Linewidth', 1.5);

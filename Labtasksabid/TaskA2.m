@@ -6,8 +6,6 @@ format long;
 set(0,'DefaultAxesFontName', 'Latex');
 set(0,'DefaultAxesFontSize', 13);
 
-
-
 %% physical constants
 m0      = 9.11e-31;
 q       = 1.6e-19;
