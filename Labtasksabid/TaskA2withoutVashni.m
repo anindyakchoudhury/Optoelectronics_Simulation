@@ -43,8 +43,8 @@ eV      = 1.6 * 10^-19;
 % Direct Allowed transition
 figure(3);
 for  T = Ts
-     %EgT   = Eg_V(T); %From Vashni's law
-     EgT  = Eg; %bandgap does not change with temperature
+     EgT   = Eg_V(T); %From Vashni's law
+     %EgT  = Eg; %bandgap does not change with temperature
      alpha = (E>EgT-Ep).*(E - EgT + Ep).^2./(exp(Ep./(kB*T)) - 1) ...
             + (E>EgT+Ep).*(E - EgT - Ep).^2./(1 - exp(-Ep./(kB*T)));
      alpha = (5.9135e20)^2.*alpha;   % need to make it work

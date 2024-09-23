@@ -62,7 +62,7 @@ title('Experimental Transition');
 % figure(2)
 subplot(133)
 % Direct Forbidden Transition
-% subplot(121) %related to 73 no line
+
 plot(lambda/1e-6, alphaf/100,'Linewidth', 1.5);
 xlabel ('\lambda (\mum)');
 ylabel('\alpha_f  cm^{-1}');

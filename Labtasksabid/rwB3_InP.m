@@ -2,44 +2,40 @@ clc;
 clearvars;
 close all;
 
-data = importdata('InP_x.txt');
+data   = importdata('InP_x.txt');
 lambda = data(:,1);
 lambda = lambda.*1e-9; %m
-n = data(:,2);
-k = data(:,3);
+n      = data(:,2);
+k      = data(:,3);
 
 % physical constants
-q       = 1.6e-19;
-m0      = 9.11e-31;
-h       = 6.626e-34;
-hcut    = h/(2*pi);
-eps0    = 8.854e-12;
-c       = 3e8;
-kB      = 1.38e-23;
-eps     = 12.6*eps0;
-me      = 0.077*m0;
-mh      = 0.64*m0;
-mr      = me*mh/(me+mh);
-fcv     = 23*q;
-fcvf    = fcv/1000;
-
-
-Eg      = 0.36*q;
-nr      = mean(n);                   % InP index Kasap
-
-Eg0     = 0.42; %eV
-A       = 4.9e-4;
-B       = 327;
+q      = 1.6e-19;
+m0     = 9.11e-31;
+h      = 6.626e-34;
+hcut   = h/(2*pi);
+eps0   = 8.854e-12;
+c      = 3e8;
+kB     = 1.38e-23;
+eps    = 12.6*eps0;
+me     = 0.077*m0;
+mh     = 0.64*m0;
+mr     = me*mh/(me+mh);
+fcv    = 23*q;
+fcvf   = fcv/1000;
+Eg     = 0.36*q;
+nr     = mean(n);                   % InP index Kasap
+Eg0    = 0.42; %eV
+A      = 4.9e-4;
+B      = 327;
 
 % physical constants
 
 nr      = mean(n);
 
-
 Eg_V    = @(T) (Eg0 - A*T^2/(B + T))*q; %Vashni's law
 Ep      = 0.03 * q;     % Typical phonon energy 20-30meV
 
-T = 300;
+T       = 300;
 
 E       = h*c./lambda;
 

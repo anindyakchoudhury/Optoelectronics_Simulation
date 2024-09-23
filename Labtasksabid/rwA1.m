@@ -64,5 +64,5 @@ grid on;
 figure(2)
 plot(lambda/1e-6,((alpha)/(alphaf)),'Linewidth', 1.5);
 xlabel ('\lambda (\mum)');
-ylabel('\alpha  cm^{-1}');
+ylabel('\alpha / \alpha_f');
 title('Order Comparison of \alpha & \alpha_f');

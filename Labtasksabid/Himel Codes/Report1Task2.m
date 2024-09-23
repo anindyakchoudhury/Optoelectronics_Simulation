@@ -18,7 +18,7 @@ c       = 3e8;
 kB      = 1.38e-23;
 
 % Load data
-string = "SiO2";
+string = "InP";
 
 switch(string)
     case "GaAs"
@@ -31,7 +31,7 @@ switch(string)
         data_SiO2();
 end
 
-data = importdata('SiO2 alpha.txt');
+data = importdata('InP alpha.txt');
 E = data(:,1); % eV
 alpha = data(:,2); % cm^-1
 
@@ -48,8 +48,8 @@ hold on
 Energy = h*c./lambda;
 
 yyaxis right;
-% plot(Energy/q, 4*pi*k./lambda/100, 'Linewidth', 2);
-plot(E,zeros(1,length(E)),'Linewidth', 2)
+ plot(Energy/q, 4*pi*k./lambda/100, 'Linewidth', 2);
+%plot(E,zeros(1,length(E)),'Linewidth', 2)
 ylabel('\alpha  cm^{-1}');
 hold on
 legend('Experimental \alpha', 'From Extinction Coeffecient');

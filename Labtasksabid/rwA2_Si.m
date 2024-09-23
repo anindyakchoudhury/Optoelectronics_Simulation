@@ -5,11 +5,11 @@ format long;
 set(0,'DefaultAxesFontName', 'Latex');
 set(0,'DefaultAxesFontSize', 13);
 
-data = importdata('Si.txt');
+data   = importdata('Si.txt');
 lambda = data(:,1);
 lambda = lambda.*1e-6; %m
-n = data(:,2);
-k = data(:,3);
+n      = data(:,2);
+k      = data(:,3);
 
 % physical constants
 Eg0     = 1.17; %eV
