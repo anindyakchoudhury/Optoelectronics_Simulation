@@ -35,6 +35,9 @@ xlabel('$\lambda$ (nm)', 'Interpreter', 'latex')
 ylabel('Gain');
 grid on;
 
+% Save the plot as a PNG file
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP4_BYAKC\exp3_task1_lineshape.png');
+
 % Plot cavity modes
 figure(2);
 plot(lambda*1e9,g,'Linewidth',2,'DisplayName','g');
@@ -56,6 +59,9 @@ xlabel('Wavelength (nm)');
 ylabel('Gain (m^{-1})');
 legend;
 
+% Save the plot as a PNG file
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP4_BYAKC\exp3_task1_cavitymodes.png');
+
 % Task 2: Threshold Gain Analysis
 figure(3);
 clearvars -except c n tau_sp lambda0 f0 del_f;
@@ -76,6 +82,10 @@ title('Variation of g_{th} with R2 and L');
 xlabel('R2');
 ylabel('gth');
 legend(legendEntries, 'Location', 'best');
+
+
+% Save the plot as a PNG file
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP4_BYAKC\exp3_task2_variationof_g.png');
 
 % Task 3: Lasing Modes Analysis
 figure(4);
@@ -115,3 +125,6 @@ ylabel('Gain (m^{-1})');
 title('Lasing Modes for (N_2 - N_1) = 7e15');
 legend;
 grid on
+
+% Save the plot as a PNG file
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP4_BYAKC\exp3_task3_lasing.png');
