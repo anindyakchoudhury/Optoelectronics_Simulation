@@ -1,7 +1,7 @@
 clc;
-clear;
+clearvars;
 close all;
-%% 
+%%
 
 set(0, 'DefaultAxesFontName', 'Times');
 set(0, 'DefaultAxesFontSize', 15);
@@ -31,6 +31,8 @@ ylabel('Current, I_{tot} (mA)')
 title("I-V Characteristics");
 ylim([-15,5]);
 
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task1_IV_characteristics.png');
+
 % line([-0.05, V(end)], [0, 0], 'Color', [0,0,0],'linewidth',2);
 % line([0, 0], [-10, 10], 'Color', [0,0,0],'linewidth',2);
 
@@ -47,14 +49,16 @@ V = 0:0.01:V_oc;
 I_total = -Iph + Io.*(exp((e.*V)./(n.*kb*T))-1);
 P = (-I_total).*V;
 
-figure(2); 
+figure(2);
 % plot(V,P/(Irr*area)*100,'linewidth',2)
 plot(V,P*1e3,'linewidth',2)
 % grid minor;
 xlabel('Voltage, V (V)')
 ylabel('Output Power, P (mW)')
 title("P-V Characteristics")
-%% 
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task1_PV_characteristics.png');
+
+%%
 Pmax = max(P);
 I_m  = I_total(P==Pmax);
 V_m  = V(P==Pmax);

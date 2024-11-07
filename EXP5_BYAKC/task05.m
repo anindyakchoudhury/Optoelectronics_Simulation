@@ -18,7 +18,7 @@ V   = 0:0.01:0.4;           % voltage
 area= 1e-2*1e-2;            % 1cm X 1cm
 Iph = K*Irr;
 
-%% 
+%%
 
 Rs = [0 10 50 100 1000 10000];
 % Rs = logspace(-3,3,100);
@@ -37,8 +37,8 @@ I_total = zeros(length(Rs),length(V));
 P_total = zeros(length(Rs),length(V));
 
 for i = 1:length(Rs)
-    V   = 0:0.01:0.4; 
-    
+    V   = 0:0.01:0.4;
+
     I =  Iph - Io*(exp(e*(V)/(n*kb*T))-1);
     V = V - I*Rs(i);
 
@@ -73,7 +73,9 @@ xlim([0,0.35]);
 
 legend('Location', 'best');
 legend box off;
-%% 
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task5_IVCharacteristics_Varying_Rs_SiSolarCell.png');
+
+%%
 
 figure(2)
 semilogx(Rs,FF,'linewidth',2)
@@ -86,4 +88,6 @@ ylabel('Fill factor, FF')
 axis tight
 grid minor;
 title("Fill Factor vs Series Resistance for Si Solar Cell");
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task5_FillFactorvsRs_SiSolarCell.png');
+
 

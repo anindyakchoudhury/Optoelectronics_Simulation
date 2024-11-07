@@ -18,7 +18,7 @@ V   = 0:0.0001:0.35;         % voltage
 area= 1e-2*1e-2;            % 1cm X 1cm
 Iph = K*Irr;
 
-%% 
+%%
 
 Rs = 0;
 % Rp = inf;
@@ -38,14 +38,14 @@ for i = 1:length(Rp)
 
     % minus current
     I = - Iph + Io*(exp(e*V/(n*kb*T))-1) + (V/Rp(i));
-   
+
     V_oc(i) = V(find(I>=0,1,'first'));
     I_sc(i) = I(find(V<=0,1,'last'));
 
 
     I_total(i,:) = I;
 
-    
+
     P_total(i,:) = (-I_total(i,:)).*V;
     P_max(i) = max(P_total(i,:));
 
@@ -70,6 +70,7 @@ xlim([0,0.35]);
 legend("R_p = 500 \Omega","R_p = 1 k\Omega", "R_p = 50 k\Omega", "R_p = 500 k\Omega", "R_p = 1 M\Omega");
 legend('Location', 'best');
 legend box off;
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task5_IVCharacteristics_Varying_Rp_SiSolarCell.png');
 %% P-V
 
 % i = 1;
@@ -77,8 +78,8 @@ legend box off;
 % ylim([0, max(P_total(i,:)/1e-3)]);
 % xlabel('Voltage, V (V)');
 % ylabel('Power, P (mW)');
-% 
-% 
+%
+%
 % grid minor;
 % title("P-V curve for Si Solar Cell");
 
@@ -96,6 +97,7 @@ ylabel('Fill factor, FF')
 axis tight
 grid minor;
 title("Fill Factor vs Shunt Resistance for Si Solar Cell");
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task5_FillFactorvsRp_SiSolarCell.png');
 
 
 

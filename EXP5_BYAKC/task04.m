@@ -1,6 +1,6 @@
 clc;
 close all;
-clear;
+clearvars;
 
 set(0, 'DefaultAxesFontName', 'Arial');
 set(0, 'DefaultAxesFontSize', 15);
@@ -21,7 +21,7 @@ Iph = K*Irr;
 Eg0 = 1.17;               % eV
 
 % Vashni's constant
-a = 4.73e-4;              % eV/K           
+a = 4.73e-4;              % eV/K
 b = 636;                  % K
 
 Eg = @(T) (Eg0-(a*T.^2)./(T+b))*e; %Varshni's equation
@@ -36,10 +36,10 @@ figure(1)
 % R_opt = zeros(1,length(n));
 
 for T = Ts
-    
+
      I_total = -Iph + Is(T).*(exp((e.*V)./(n.*kb*T))-1);
 %     P = (-I_total).*V;
-% 
+%
 %     V_oc(i) = V(find(I_total<=0,1,'last'));
 %     I_sc(i) = -Iph;
 %     P_max(i) = max(P);
@@ -59,3 +59,4 @@ title("I-V Characteristics for various Temparature")
 ylim([-10 0])
 legend('Location', 'best');
 legend box off
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task4_IV_Curve_fortempVaries_IoVaries_SiSolarCell.png');

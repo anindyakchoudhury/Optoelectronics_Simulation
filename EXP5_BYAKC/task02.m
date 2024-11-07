@@ -1,5 +1,5 @@
 clc;
-clear;
+clearvars;
 close all;
 
 set(0, 'DefaultAxesFontName', 'Times');
@@ -28,7 +28,7 @@ R_opt = zeros(1,length(Iph));
 FF = zeros(1,length(Iph));
 
 for i = 1:length(Iph)
-    
+
     I_total = -Iph(i) + Io.*(exp((e.*V)./(n.*kb*T))-1);
     P = (-I_total).*V;
 
@@ -50,6 +50,7 @@ title("I-V Characteristics for various Irradiation");
 ylim([-22 5]);
 legend(num2str(Irr(:))+ " Wm^{-2}","Location","best");
 legend box off;
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task2_IV_Charac_various_irridation_SiSolarCell.png');
 %% Voc vs n
 
 figure(2)
@@ -59,6 +60,7 @@ xlabel('Solar Irradiation, I (Wm^{-2})')
 ylabel('Open Circuit Voltage, V_{oc} (V)')
 % grid minor;
 title("V_{oc} vs Solar Irradiation")
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task2_VocvsSolar_Irridance_SiSolarCell.png');
 
 %% Isc vs n
 
@@ -69,8 +71,8 @@ xlabel('Solar Irradiation, I (Wm^{-2})')
 ylabel('Short Circuit Current, I_{sc} (mA)')
 % grid minor;
 title("I_{sc} vs Solar Irradiation of Si Solar Cell")
-
-%% 
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task2_IscvsSolar_Irridance_SiSolarCell.png');
+%%
 
 figure(4)
 plot(Irr,P_max*1e3,'^-','linewidth',2);
@@ -79,6 +81,7 @@ xlabel('Solar Irradiation, I (Wm^{-2})')
 ylabel('P_{max} (mW)')
 % grid minor;
 title("P_{max} vs Solar Irradiation of Si Solar Cell")
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task2_PmaxvsSolar_Irridance_SiSolarCell.png');
 
 p_new = zeros(1,length(Irr));
 for j = 1:length(Irr)
@@ -91,15 +94,15 @@ dev =  sqrt(sum(abs(p_new-P_max).^2));
 deviation = dev/(P_max(end)-P_max(1));
 fprintf("deviation = %.4f \n", deviation)
 
-%% 
+%%
 
 figure(5)
 plot(Irr,R_opt,'linewidth',2);
 xlabel('Solar Irradiation, I (Wm^{-2})')
 ylabel('Optimum R_{load} (\Omega)')
 % grid minor;
-title("R_{load} vs Solar Irradiance")
-
+title("R_{load} vs Solar Irradiance of Si Solar Cell")
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task2_RloadvsSolar_Irridance.png');
 
 %%
 figure(6)
@@ -108,6 +111,7 @@ xlabel('Solar Irradiation, I (Wm^{-2})')
 ylabel('Fill Factor, FF)');
 grid minor;
 title("FF vs Solar Irradiance of Si Solar Cell")
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task2_FFvsSolar_Irridance_SiSolarCell.png');
 
 
 

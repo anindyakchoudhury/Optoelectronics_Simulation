@@ -1,10 +1,10 @@
 clc;
-clear;
+clearvars;
 close all;
 
 set(0, 'DefaultAxesFontName', 'Arial');
 set(0, 'DefaultAxesFontSize', 15);
-%% 
+%%
 e   = 1.6e-19;
 T   = 300;                              % K
 Io  = 25e-9;                            % A
@@ -20,14 +20,14 @@ Iph = K*Irr;
 %% I-V Characteristics
 
 figure(1)
-V_oc = zeros(1,length(n)); % Initialization
-I_sc = zeros(1,length(n));
+V_oc  = zeros(1,length(n)); % Initialization
+I_sc  = zeros(1,length(n));
 P_max = zeros(1,length(n));
 R_opt = zeros(1,length(n));
-FF = zeros(1,length(n));
+FF    = zeros(1,length(n));
 
 for i = 1:length(n)
-    
+
     I_total = -Iph + Io.*(exp((e.*V)./(n(i).*kb*T))-1);
     P = (-I_total).*V;
 
@@ -53,6 +53,7 @@ ylim([-10 0]);
 legend("n ="+num2str(n(:)),"Location","best")
 
 legend box off
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task3_IVcharac_forVarious_Idealityfactor_SiSolarCell.png');
 %% Voc vs n
 
 figure(2)
@@ -62,7 +63,7 @@ xlabel('Ideality Factor, n')
 ylabel('V_{oc} (V)')
 grid minor;
 title("V_{oc} vs Ideality Factor")
-
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task3_Voc_vs_Idealityfactor_SiSolarCell.png');
 %% Isc vs n
 
 figure(3)
@@ -72,7 +73,7 @@ xlabel('Ideality Factor, n')
 ylabel('I_{sc} (mA)')
 grid minor;
 title("I_{sc} vs Ideality Factor")
-
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task3_IscvsIdealityfactor_SiSolarCell.png');
 %% Pmax vs n
 
 figure(4)
@@ -83,6 +84,7 @@ xlabel('Ideality Factor, n')
 ylabel('P_{max} (mW)')
 grid minor;
 title("P_{max} vs Ideality Factor");
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task3_Pmax_vs_Idealityfactor_SiSolarCell.png');
 %% Ropt vs n
 
 figure(5)
@@ -91,6 +93,7 @@ xlabel('Ideality Factor, n')
 ylabel('Optimum Load Resistance, R_{opt} (\Omega)')
 grid minor;
 title("Optimum Load Resistance vs Ideality Factor of Si Solar Cell")
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task3_Ropt_vs_n_SiSolarCell.png');
 %% FF vs n
 
 figure(6)
@@ -99,3 +102,4 @@ xlabel('Ideality Factor, n')
 ylabel('Fill Factor, FF')
 grid minor;
 title("Fill factor vs Ideality Factor of Si Solar Cell")
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP5_BYAKC\reportprepare\task3_FillFactorvsIdealityfactor_SiSolarCell.png');
