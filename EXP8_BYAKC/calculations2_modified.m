@@ -206,6 +206,8 @@ plot(Lg, le_g, '-', 'Color', green_color, 'LineWidth', 2);
 plot(Lg, le_g, 'o', 'Color', 'black', 'MarkerSize', 8, 'MarkerFaceColor', green_color);
 plot(Lw, le_w, '-', 'Color', blue_color, 'LineWidth', 2);
 plot(Lw, le_w, 'o', 'Color', 'black', 'MarkerSize', 8, 'MarkerFaceColor', blue_color);
+plot(Lr, le_r, '-', 'Color', red_color, 'LineWidth', 2);
+plot(Lr, le_r, 'o', 'Color', 'black', 'MarkerSize', 8, 'MarkerFaceColor', red_color);
 
 legend('Yellow', '', 'Green', '', 'White', '', 'red','');
 legend('Location', 'best', 'FontSize', 12);
