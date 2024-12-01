@@ -1,0 +1,73 @@
+[Previous code up until first figure remains exactly the same until the end of the first figure plotting]
+
+%% I-V Characteristics
+figure('Position', [100, 100, 800, 600]);
+
+[... Previous I-V plotting code remains the same ...]
+
+title('Current-Voltage (I-V) Characteristics of Different LED Colors', ...
+    'FontSize', 14, 'FontWeight', 'bold');
+xlabel('Forward Voltage (V)', 'FontSize', 12, 'FontWeight', 'bold');
+ylabel('Forward Current (mA)', 'FontSize', 12, 'FontWeight', 'bold');
+
+% Save I-V characteristics figure
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP8_BYAKC\reportprepare\IV_Characteristics.png');
+
+%% L-I Characteristics
+figure('Position', [100, 100, 800, 600]);
+
+[... Previous L-I plotting code remains the same ...]
+
+title('Light Output Power vs. Forward Current (L-I) Characteristics', ...
+    'FontSize', 14, 'FontWeight', 'bold');
+xlabel('Forward Current (mA)', 'FontSize', 12, 'FontWeight', 'bold');
+ylabel('Optical Power (µW)', 'FontSize', 12, 'FontWeight', 'bold');
+
+% Save L-I characteristics figure
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP8_BYAKC\reportprepare\LI_Characteristics.png');
+
+%% L-V Characteristics
+figure('Position', [100, 100, 800, 600]);
+
+[... Previous L-V plotting code remains the same ...]
+
+title('Light Output Power vs. Forward Voltage (L-V) Characteristics', ...
+    'FontSize', 14, 'FontWeight', 'bold');
+xlabel('Forward Voltage (V)', 'FontSize', 12, 'FontWeight', 'bold');
+ylabel('Optical Power (µW)', 'FontSize', 12, 'FontWeight', 'bold');
+
+% Save L-V characteristics figure
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP8_BYAKC\reportprepare\LV_Characteristics.png');
+
+%% External Quantum Efficiency (EQE)
+[... Previous EQE calculation and plotting code remains the same ...]
+
+title('External Quantum Efficiency (EQE) vs. Optical Power', ...
+    'FontSize', 14, 'FontWeight', 'bold');
+xlabel('Optical Power (µW)', 'FontSize', 12, 'FontWeight', 'bold');
+ylabel('External Quantum Efficiency (%)', 'FontSize', 12, 'FontWeight', 'bold');
+
+% Save EQE figure
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP8_BYAKC\reportprepare\External_Quantum_Efficiency.png');
+
+%% Power Conversion Efficiency (PCE)
+[... Previous PCE calculation and plotting code remains the same ...]
+
+title('Power Conversion Efficiency (PCE) vs. Optical Power', ...
+    'FontSize', 14, 'FontWeight', 'bold');
+xlabel('Optical Power (µW)', 'FontSize', 12, 'FontWeight', 'bold');
+ylabel('Power Conversion Efficiency (%)', 'FontSize', 12, 'FontWeight', 'bold');
+
+% Save PCE figure
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP8_BYAKC\reportprepare\Power_Conversion_Efficiency.png');
+
+%% Luminous Efficacy (LE)
+[... Previous LE calculation and plotting code remains the same ...]
+
+title('Luminous Efficacy (LE) vs. Optical Power', ...
+    'FontSize', 14, 'FontWeight', 'bold');
+xlabel('Optical Power (µW)', 'FontSize', 12, 'FontWeight', 'bold');
+ylabel('Luminous Efficacy (lm/W)', 'FontSize', 12, 'FontWeight', 'bold');
+
+% Save LE figure
+saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\EXP8_BYAKC\reportprepare\Luminous_Efficacy.png');
