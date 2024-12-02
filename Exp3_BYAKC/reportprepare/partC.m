@@ -1,91 +1,86 @@
-clc;
-clearvars;
-close all;
+% Clear workspace and command window for fresh start
+clc; clearvars; close all;
 
-%% Choose data/Task no
-
+%% Material Selection and Parameter Definition
+% Choose between GaAs (Task 1) or GaN (Task 2) LED characteristics
 Task_no = 2; % Task 1: GaAs, Task 2: GaN
 
 switch (Task_no)
     case 1
+        % Parameters for GaAs LED
         material = 'GaAs';
-        % Mobility in cm2/Vs
-        u_n = 8500;
-        u_p = 400;
-
-        % Doping concentrations in (cm-3)
-        Na = 1e15;
-        Nd = 5e17;
-
-        ni = 1.79e6; % intrinsic carrier concentration (cm-3)
-
-        A = 1*(1/10)^2;       % Cross section Area in cm2
-        nf = 1.5;
-
-        lamda0 = 860e-9; %Peak Wavelength from Exp1
+        u_n = 8500;        % Electron mobility in cm²/Vs - higher for GaAs
+        u_p = 400;         % Hole mobility in cm²/Vs
+        Na = 1e15;         % p-type doping concentration (cm⁻³)
+        Nd = 5e17;         % n-type doping concentration (cm⁻³)
+        ni = 1.79e6;       % Intrinsic carrier concentration (cm⁻³)
+        A = 1*(1/10)^2;    % Device cross-sectional area (cm²)
+        nf = 1.5;          % Ideality factor - indicates recombination mechanism
+        lamda0 = 860e-9;   % Peak emission wavelength (m)
 
     case 2
+        % Parameters for GaN LED
         material = 'GaN';
-        % Mobility in cm2/Vs
-        u_n = 1800;
-        u_p = 30;
-
-        % Doping concentrations in (cm-3)
-        Na = 1e15;
-        Nd = 1e18;
-
-        ni = 1.9e-10; % intrinsic carrier concentration (cm-3)
-
-        A = 0.5*(1/10)^2;       % Cross section Area in cm2
-        nf = 1;
-
-        lamda0 = 360e-9; %Peak Wavelength from Exp1
+        u_n = 1800;        % Lower mobility compared to GaAs
+        u_p = 30;          % Much lower hole mobility - typical for GaN
+        Na = 1e15;         % p-type doping concentration (cm⁻³)
+        Nd = 1e18;         % Higher n-type doping for GaN
+        ni = 1.9e-10;      % Much lower due to wider bandgap
+        A = 0.5*(1/10)^2;  % Smaller device area
+        nf = 1;            % Ideal diode behavior assumed
+        lamda0 = 360e-9;   % Shorter wavelength (UV region)
 end
-% Peak Wavelength(nm) = 1243/Bandgap(eV)
 
-% Constants in SI unit
-h = 6.626e-34;
-k_B = 1.38e-23;
-T = 300;
-q = 1.6e-19;
+% Define fundamental physical constants in SI units
+h = 6.626e-34;    % Planck's constant (J·s)
+k_B = 1.38e-23;   % Boltzmann constant (J/K)
+T = 300;          % Temperature (K)
+q = 1.6e-19;      % Elementary charge (C)
 
-deln = 1e17; % excess minority carrier concentration
+% Define injection level
+deln = 1e17;      % Excess carrier concentration (cm⁻³)
 
-%% Calculation
-npo = ni^2/Na;
-pno = ni^2/Nd;
+%% Calculate Transport Parameters
+% Determine equilibrium minority carrier concentrations
+npo = ni^2/Na;    % Electrons in p-region
+pno = ni^2/Nd;    % Holes in n-region
 
-% cm2/s
-Dn = (k_B*T*u_n)/q;
-Dp = (k_B*T*u_p)/q;
-Br = 1e-10;
+% Calculate diffusion coefficients using Einstein relation
+Dn = (k_B*T*u_n)/q;    % Electron diffusion coefficient (cm²/s)
+Dp = (k_B*T*u_p)/q;    % Hole diffusion coefficient (cm²/s)
 
-%tau_n means lifetime of minority electron in p-region
-tau_n = 1/(Br*(Na+npo+deln));
-tau_p = 1/(Br*(pno+Nd+deln));
+% Define radiative recombination coefficient and calculate lifetimes
+Br = 1e-10;                           % Radiative recombination coefficient
+tau_n = 1/(Br*(Na+npo+deln));        % Electron lifetime in p-region
+tau_p = 1/(Br*(pno+Nd+deln));        % Hole lifetime in n-region
 
-Ln = (Dn*tau_n)^0.5;
-Lp = (Dp*tau_p)^0.5;
+% Calculate diffusion lengths
+Ln = (Dn*tau_n)^0.5;    % Electron diffusion length
+Lp = (Dp*tau_p)^0.5;    % Hole diffusion length
 
-V = linspace(0,3,10000); % Voltage (X-axis)
+%% Calculate I-V Characteristics
+% Define voltage range for calculations
+V = linspace(0,3,10000);    % Voltage from 0 to 3V
 
-% Current Density (A/cm2)
-Js = q*((Dn*npo/Ln)+(Dp*pno/Lp));
+% Calculate saturation current density using diffusion theory
+Js = q*((Dn*npo/Ln)+(Dp*pno/Lp));    % Saturation current density (A/cm²)
 
-Is = A*Js;
-I = Is*exp(((q*V)./(nf*k_B*T))-1);
+% Calculate total saturation current considering device area
+Is = A*Js;    % Total saturation current (A)
 
-%% Ploting
+% Calculate total current using diode equation
+I = Is*exp(((q*V)./(nf*k_B*T))-1);    % Current (A)
 
+%% Create and Save Plot
+% Plot I-V characteristics with current in microamps
 plot(V,I/1e-6, "LineWidth",2);
 xlabel('V (V)');
 ylabel('I (\muA)');
 title(sprintf('I-V characteristics for %s LED',material));
 
+% Set plot limits and add grid
 ylim([0 10]);
-% title('I-V characteristics of GaAs');
 grid on;
 
-
-% Save the plot as a PNG file
+% Save plot as PNG file
 saveas(gcf, 'C:\SPB_Data\EEE460_Jan2024_byakc\Exp3_BYAKC\reportprepare\partC_task2.png');
