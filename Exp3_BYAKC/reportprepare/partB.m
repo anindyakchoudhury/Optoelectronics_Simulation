@@ -3,13 +3,13 @@ clearvars;
 close all;
 
 % Constants in SI unit
-h = 6.626e-34;
+h     = 6.626e-34;
 h_cut = h/(2*pi);
-c = 3e8;
-k_B = 1.38e-23;
-T = 300;
-q = 1.6e-19;
-mo = 9.1e-31;
+c     = 3e8;
+k_B   = 1.38e-23;
+T     = 300;
+q     = 1.6e-19;
+mo    = 9.1e-31;
 
 %% Choose data
 Task_no = 2;  % Task 1: GaAs, Task 2: GaN
@@ -60,9 +60,9 @@ switch (Task_no)
         lamda0 = 360e-9; %Peak Wavelength from Exp1
 end
 
-deln = 1e17; % excess minority carrier concentration
-A = 1*(1/10)^2;       % Cross section Area in cm2
-mr = (me*mh)/(me+mh); % average effective mass
+deln = 1e17;             % excess minority carrier concentration
+A    = 1*(1/10)^2;       % Cross section Area in cm2
+mr   = (me*mh)/(me+mh);  % average effective mass
 
 
 %% Injection efficiency

@@ -109,10 +109,13 @@ figure(4);
 R2_range = 0.5:0.1:0.9;
 L_range = (10:0.1:100)*1e-2;
 [R2_mesh, L_mesh] = meshgrid(R2_range, L_range);
+% R2_range becomes the value in the column assigned to every value of L_range (essentially row)
 gth_mesh = gamma + log(1./(R1.*R2_mesh))./(2*L_mesh);
+% calculates gth_mesh for every possible value of (L,R) combination
 
 % Plot gth vs L for different R2
 plot(L_range*100, gth_mesh(:,1), 'LineWidth', 2, 'DisplayName', 'R2=50%');
+%prints the first column (first value of R) and every row (all possible values of L)
 hold on;
 plot(L_range*100, gth_mesh(:,3), 'LineWidth', 2, 'DisplayName', 'R2=70%');
 plot(L_range*100, gth_mesh(:,5), 'LineWidth', 2, 'DisplayName', 'R2=90%');
@@ -140,7 +143,7 @@ grid on;
 figure(5);
 R2_range = linspace(0.5, 0.9, 1000);  % 1000 points between 0.5 and 0.9
 L_values = (10:10:100)*1e-2;          % 10 cavity lengths from 10cm to 100cm
-colors = jet(length(L_values));        % Create different colors for each length
+colors = jet(length(L_values));       % Create different colors for each length
 
 % Plot gth vs R2 for different cavity lengths
 for i = 1:length(L_values)
@@ -149,6 +152,7 @@ for i = 1:length(L_values)
          'DisplayName', sprintf('L = %d cm', L_values(i)*100));
     hold on;
 end
+%check how different colors are assigned here
 
 xlabel('Mirror Reflectance R2 (%)');
 ylabel('Threshold Gain (m^{-1})');
