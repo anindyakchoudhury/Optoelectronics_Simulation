@@ -6,25 +6,35 @@ set(0, 'DefaultAxesFontName', 'Arial');
 set(0, 'DefaultAxesFontSize', 15);
 %% initial
 
-e   = 1.6e-19;
-Ts   = [15, 20, 25, 30, 35, 40]+273;      % K
-Io  = 25e-9;              % A
-kb  = 1.38e-23;
-K   = 10e-3/500;
-Irr = 500;                % W/m^2
-n   = 1;
-V   = 0:0.001:0.4;        % voltage
-area= 1e-2*1e-2;          % 1cm X 1cm
-Iph = K*Irr;
+% Fundamental physical constants
+e   = 1.6e-19;                      % Elementary charge in Coulombs
+Ts   = [15, 20, 25, 30, 35, 40]+273;  % Temperature range in Kelvin (converting from Celsius)
+Io  = 25e-9;                        % Reference reverse saturation current at 300K in Amperes
+kb  = 1.38e-23;                     % Boltzmann constant in J/K
 
-% For Si
-Eg0 = 1.17;               % eV
+% Solar cell operating parameters
+K   = 10e-3/500;                    % Photoelectric conversion coefficient (A/W)
+Irr = 500;                          % Solar irradiance in W/m²
+n   = 1;                            % Ideality factor (ideal diode)
+V   = 0:0.001:0.4;                 % Voltage array from 0 to 0.4V in 1mV steps
+area= 1e-2*1e-2;                    % Solar cell area (1cm x 1cm) in m²
+Iph = K*Irr;                        % Photogenerated current (A)
 
-% Vashni's constant
-a = 4.73e-4;              % eV/K
-b = 636;                  % K
+% Silicon bandgap parameters for temperature dependence
+Eg0 = 1.17;                         % Silicon bandgap energy at 0K in eV
+a = 4.73e-4;                        % Varshni coefficient alpha in eV/K
+b = 636;                            % Varshni coefficient beta in K
 
-Eg = @(T) (Eg0-(a*T.^2)./(T+b))*e; %Varshni's equation
+% Temperature-dependent bandgap energy using Varshni's equation
+% This equation models how silicon's bandgap decreases with increasing temperature
+% T^2 dependence in numerator and (T+b) in denominator capture the physical behavior
+Eg = @(T) (Eg0-(a*T.^2)./(T+b))*e; % Converting eV to Joules by multiplying with e
+
+% Temperature-dependent saturation current
+% Models how reverse saturation current increases with temperature due to:
+% 1. T^3 term from carrier density dependence
+% 2. Exponential term from bandgap narrowing effect
+% Normalized to reference temperature of 300K
 Is = @(T) Io*(T/300).^3.*exp(-(  Eg(T)./(kb*T)  -  Eg(300)/(kb*300) ));
 
 %% I-V Characteristics
