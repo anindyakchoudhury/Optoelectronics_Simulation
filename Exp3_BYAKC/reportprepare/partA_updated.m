@@ -85,7 +85,7 @@ delE   = (E-Eg);    %hu-Eg term basically
 
 %Recombination happens in p-GaAs region
 %We use hole lifetime as the radiative recombination time
-tau_r = tau_p;
+tau_r = tau_n;
 
 % Calculate quasi-Fermi levels relative to intrinsic Fermi level
 % Under injection of excess carriers (deln)
