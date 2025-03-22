@@ -37,5 +37,5 @@ Measured the spectral characteristics of different colored LEDs, analyzing peak 
   - Tanushri Medha Kundu (Lecturer, PT, EEE, BUET)
 - **Lab Partner**: Musfiquzzaman Abid (Student ID: 1906084)
 
-## Author
-- **Anindya Kishore Choudhury** (Student ID: 1906081)
+# For Assistance
+- **Mrinmoy Kundu** (Lecturer, EEE, BUET)
